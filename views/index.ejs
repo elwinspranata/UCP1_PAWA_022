@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Kolam Renang</title>
+</head>
+<body>
+    <h1>Data Kolam Renang</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Nama Kolam" required>
+        <input type="text" name="location" placeholder="Lokasi" required>
+        <input type="number" name="capacity" placeholder="Kapasitas" required>
+        <button type="submit">Tambah Kolam</button>
+    </form>
+    <ul>
+        <% pools.forEach(pool => { %>
+            <li>
+                <%= pool.name %> - <%= pool.location %> - <%= pool.capacity %> orang
+                <form action="/delete" method="POST" style="display:inline;">
+                    <input type="hidden" name="id" value="<%= pool.id %>">
+                    <button type="submit">Hapus</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
